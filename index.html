@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stonegate Holdings — Family Office</title>
+  <meta name="description" content="A family office style holding company focused on long-term capital preservation and compounding." />
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1620;
+      --text:#e9eef6;
+      --muted:#a8b3c7;
+      --line:rgba(255,255,255,.10);
+      --accent:#d6b15e; /* gold */
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:
+        radial-gradient(1200px 700px at 70% -10%, rgba(214,177,94,.18), transparent 60%),
+        radial-gradient(900px 500px at 10% 10%, rgba(130,170,255,.12), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      background:rgba(15,22,32,.65);
+      backdrop-filter: blur(10px);
+      border-radius:999px;
+      position:sticky; top:16px; z-index:20;
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:650; letter-spacing:.3px}
+    .mark{
+      width:32px; height:32px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(214,177,94,.95), rgba(255,255,255,.08));
+      display:grid; place-items:center;
+      color:#0b0f14; font-weight:900;
+    }
+    .navlinks{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
+    .navlinks a{color:var(--muted); font-size:14px}
+    .navlinks a:hover{color:var(--text)}
+    .cta{
+      padding:10px 14px;
+      border-radius:999px;
+      background: linear-gradient(135deg, rgba(214,177,94,1), rgba(214,177,94,.55));
+      color:#0b0f14;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: 0 14px 30px rgba(214,177,94,.16);
+      font-size:14px;
+      white-space:nowrap;
+    }
+    .cta:hover{filter:brightness(1.05)}
+    .hero{
+      padding:56px 0 28px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:28px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr; padding-top:36px}
+      .nav{border-radius:18px}
+    }
+    .kicker{color:var(--accent); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:12px}
+    h1{
+      margin:.35rem 0 1rem;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .lead{color:var(--muted); font-size:16px; max-width:58ch}
+    .heroActions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+    .btn{
+      padding:12px 16px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(15,22,32,.5);
+      color:var(--text);
+      font-weight:650;
+      font-size:14px;
+    }
+    .btn:hover{border-color:rgba(214,177,94,.45)}
+    .btnPrimary{
+      background: linear-gradient(135deg, rgba(214,177,94,1), rgba(214,177,94,.55));
+      color:#0b0f14;
+      border-color: rgba(255,255,255,.10);
+    }
+    .panel{
+      border:1px solid var(--line);
+      background: rgba(15,22,32,.65);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroCard{
+      padding:18px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      gap:16px;
+    }
+    .metricGrid{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    .metric{
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background: rgba(11,15,20,.35);
+    }
+    .metric .label{color:var(--muted); font-size:12px}
+    .metric .value{font-size:18px; font-weight:750; margin-top:6px}
+    .note{
+      color:var(--muted);
+      font-size:12px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+    }
+    section{padding:26px 0}
+    .sectionHead{display:flex; justify-content:space-between; gap:16px; align-items:flex-end; flex-wrap:wrap}
+    .sectionHead h2{margin:0; font-size:22px; letter-spacing:-.01em}
+    .sectionHead p{margin:0; color:var(--muted); max-width:70ch}
+    .grid3{
+      margin-top:16px;
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 920px){ .grid3{grid-template-columns:1fr} }
+    .card{padding:18px}
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .pillars{
+      margin-top:16px;
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 920px){ .pillars{grid-template-columns:1fr} }
+    .list{
+      margin:10px 0 0;
+      padding:0 0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .divider{height:1px; background:var(--line); margin:24px 0}
+    .footer{
+      padding:26px 0 42px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .form{
+      margin-top:16px;
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 920px){ .form{grid-template-columns:1fr} }
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(11,15,20,.35);
+      color:var(--text);
+      outline:none;
+      font-family:var(--font);
+    }
+    input:focus, textarea:focus{border-color: rgba(214,177,94,.6)}
+    textarea{min-height:110px; resize:vertical; grid-column:1/-1}
+    .formActions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .small{font-size:12px; color:var(--muted)}
+    .badgeRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .badge{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(11,15,20,.25);
+      color:var(--muted);
+      font-size:12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="brand">
+        <div class="mark">S</div>
+        <div>
+          <div style="font-size:14px; line-height:1;">Stonegate Holdings</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:2px;">Family Office • Holding Company</div>
+        </div>
+      </div>
+
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#thesis">Thesis</a>
+        <a href="#focus">Focus</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="cta" href="#contact">Request a Conversation</a>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero">
+        <div>
+          <div class="kicker">Long-term ownership</div>
+          <h1>Build, acquire, and hold high-quality businesses and real assets.</h1>
+          <p class="lead">
+            Stonegate Holdings is a family office style holding company focused on capital preservation,
+            disciplined compounding, and pragmatic risk management across select private opportunities.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn btnPrimary" href="#thesis">View Investment Thesis</a>
+            <a class="btn" href="#contact">Introduce an Opportunity</a>
+            <a class="btn" href="#focus">Focus Areas</a>
+          </div>
+
+          <div class="badgeRow" aria-label="Highlights">
+            <span class="badge">Private capital</span>
+            <span class="badge">Long duration</span>
+            <span class="badge">Operator mindset</span>
+            <span class="badge">Conservative leverage</span>
+          </div>
+        </div>
+
+        <aside class="panel heroCard" aria-label="At-a-glance">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
+            <div>
+              <div style="font-weight:750; font-size:16px;">At a glance</div>
+              <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+                Substitute these with your real numbers or remove entirely.
+              </div>
+            </div>
+            <div style="color:var(--accent); font-weight:800; font-size:18px;">●</div>
+          </div>
+
+          <div class="metricGrid">
+            <div class="metric">
+              <div class="label">Investment horizon</div>
+              <div class="value">5–15+ years</div>
+            </div>
+            <div class="metric">
+              <div class="label">Preferred stage</div>
+              <div class="value">Cash-flowing</div>
+            </div>
+            <div class="metric">
+              <div class="label">Structure</div>
+              <div class="value">HoldCo / SPVs</div>
+            </div>
+            <div class="metric">
+              <div class="label">Decision speed</div>
+              <div class="value">Days, not months</div>
+            </div>
+          </div>
+
+          <div class="note">
+            <strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute an offer,
+            solicitation, or investment advice.
+          </div>
+        </aside>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- THESIS -->
+      <section id="thesis">
+        <div class="sectionHead">
+          <h2>Investment thesis</h2>
+          <p>
+            We prioritize durability: resilient cash flows, strong counterparties, transparent governance,
+            and downside-protected structures.
+          </p>
+        </div>
+
+        <div class="grid3">
+          <div class="panel card">
+            <h3>Capital preservation first</h3>
+            <p>We underwrite conservatively and avoid stories that require perfect execution to work.</p>
+          </div>
+          <div class="panel card">
+            <h3>Owner-operator alignment</h3>
+            <p>We prefer founders and operators who think in decades, not quarters.</p>
+          </div>
+          <div class="panel card">
+            <h3>Simple structures</h3>
+            <p>Clean cap tables, clear rights, and straightforward decision-making beat complexity.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOCUS -->
+      <section id="focus">
+        <div class="sectionHead">
+          <h2>Focus areas</h2>
+          <p>
+            Example categories—edit to match your actual mandate. Keep it tight; family office pages should not read like a menu.
+          </p>
+        </div>
+
+        <div class="pillars">
+          <div class="panel card">
+            <h3>Real assets</h3>
+            <p>Core real estate, logistics, essential infrastructure, and inflation-hedged assets.</p>
+            <ul class="list">
+              <li>Prime residential & mixed-use</li>
+              <li>Industrial & last-mile logistics</li>
+              <li>Yielding assets with clear value-add</li>
+            </ul>
+          </div>
+
+          <div class="panel card">
+            <h3>Private companies</h3>
+            <p>Cash-flowing businesses with defensible moats and rational capital allocation.</p>
+            <ul class="list">
+              <li>Business services</li>
+              <li>Specialty finance (where regulated + prudent)</li>
+              <li>Tech-enabled but fundamentals-led</li>
+            </ul>
+          </div>
+
+          <div class="panel card">
+            <h3>Structured opportunities</h3>
+            <p>Situations where terms and structure matter more than hype.</p>
+            <ul class="list">
+              <li>Preferred equity / mezzanine</li>
+              <li>Revenue-share / royalties</li>
+              <li>Asset-backed lending</li>
+            </ul>
+          </div>
+
+          <div class="panel card">
+            <h3>Co-investments</h3>
+            <p>Selective partnerships with proven operators and transparent reporting.</p>
+            <ul class="list">
+              <li>Aligned GP incentives</li>
+              <li>Clear reporting cadence</li>
+              <li>Defined liquidity pathways</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPROACH -->
+      <section id="approach">
+        <div class="sectionHead">
+          <h2>How we work</h2>
+          <p>Fast, disciplined, and quiet. If it’s not a fit, we say so early.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="panel card">
+            <h3>1) Filter</h3>
+            <p>Mandate check, basic diligence, and alignment review (48–72 hours when data is clean).</p>
+          </div>
+          <div class="panel card">
+            <h3>2) Underwrite</h3>
+            <p>Downside case, unit economics, counterparties, and legal structure—no shortcuts.</p>
+          </div>
+          <div class="panel card">
+            <h3>3) Execute</h3>
+            <p>Simple term sheets, clear conditions, and decisive execution once conviction is earned.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="sectionHead">
+          <h2>Contact</h2>
+          <p>
+            Share a brief overview and we’ll respond if aligned. For sensitive materials, request a secure channel.
+          </p>
+        </div>
+
+        <div class="panel card">
+          <form class="form" onsubmit="return handleSubmit(event)">
+            <input required name="name" placeholder="Full name" />
+            <input required type="email" name="email" placeholder="Email" />
+            <input name="company" placeholder="Company / Project (optional)" />
+            <input name="location" placeholder="Location (optional)" />
+            <textarea required name="message" placeholder="Message (what it is, size, timeline, and what you’re looking for)"></textarea>
+
+            <div class="formActions">
+              <button class="btn btnPrimary" type="submit">Send message</button>
+              <span class="small">This demo form opens your email client. Hook it to your backend if needed.</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div class="footer">
+        <div class="divider"></div>
+        <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div>© <span id="year"></span> Stonegate Holdings. All rights reserved.</div>
+          <div>
+            <a href="#thesis" style="color:var(--muted);">Thesis</a>
+            <span style="opacity:.4;"> • </span>
+            <a href="#contact" style="color:var(--muted);">Contact</a>
+          </div>
+        </div>
+        <div style="margin-top:10px; color:var(--muted); max-width:92ch;">
+          Not investment advice. No offer is made except through definitive documentation and in compliance with applicable laws.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+
+      // Simple "mailto" handoff (no backend).
+      const subject = encodeURIComponent(`Inquiry — ${data.name}${data.company ? " / " + data.company : ""}`);
+      const body = encodeURIComponent(
+        `Name: ${data.name}\nEmail: ${data.email}\nCompany/Project: ${data.company || "-"}\nLocation: ${data.location || "-"}\n\nMessage:\n${data.message}\n`
+      );
+
+      // TODO: Replace with your target email address:
+      const to = "info@yourdomain.com";
+
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      return false;
+    }
+  </script>
+</body>
+</html>
